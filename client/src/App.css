@@ -1,0 +1,199 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+}
+
+/* Navbar */
+
+.navbar {
+  background: #2563eb;
+  color: white;
+
+  padding: 15px 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h2 {
+  margin: 0;
+}
+
+.navbar button {
+  background: white;
+  color: #2563eb;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Container */
+
+.container {
+  padding: 30px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Forms */
+
+.form,
+.edit-form {
+  max-width: 600px;
+  margin: 20px auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+/* Inputs */
+
+input,
+textarea,
+select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+textarea {
+  height: 100px;
+}
+
+/* Buttons */
+
+button {
+  padding: 12px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Filters */
+
+.filters {
+  margin: 30px 0;
+
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.filters input,
+.filters select {
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Task Grid */
+
+.task-grid {
+  margin-top: 40px;
+
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  );
+
+  gap: 20px;
+}
+
+/* Task Card */
+
+.task-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+
+  box-shadow: 0 2px 5px
+    rgba(0, 0, 0, 0.1);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Priority */
+
+.priority,
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+}
+
+.Low {
+  background: green;
+}
+
+.Medium {
+  background: orange;
+}
+
+.High {
+  background: red;
+}
+
+/* Status */
+
+.Pending {
+  background: gray;
+}
+
+.Completed {
+  background: #2563eb;
+}
+
+/* Buttons */
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.delete {
+  background: crimson;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .form,
+  .edit-form {
+    padding: 20px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+}
