@@ -1,20 +1,74 @@
 const express = require("express");
 
-const {
-  getTasks,
-  createTask,
-  updateTask,
-  deleteTask,
-} = require("../controllers/taskController");
-
 const router = express.Router();
 
-router.get("/", getTasks);
+const Task = require("../models/Task");
 
-router.post("/", createTask);
+// GET ALL TASKS
 
-router.put("/:id", updateTask);
+router.get("/", async (req, res) => {
+  try {
+    const tasks = await Task.find();
 
-router.delete("/:id", deleteTask);
+    res.json(tasks);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+});
+
+// CREATE TASK
+
+router.post("/", async (req, res) => {
+  try {
+    const task = await Task.create(req.body);
+
+    res.status(201).json(task);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+});
+
+// UPDATE TASK
+
+router.put("/:id", async (req, res) => {
+  try {
+    const updatedTask =
+      await Task.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {
+          new: true,
+        }
+      );
+
+    res.json(updatedTask);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+});
+
+// DELETE TASK
+
+router.delete("/:id", async (req, res) => {
+  try {
+    await Task.findByIdAndDelete(
+      req.params.id
+    );
+
+    res.json({
+      message: "Task Deleted",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+});
 
 module.exports = router;
