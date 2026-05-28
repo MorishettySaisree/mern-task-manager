@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
-// Routes
 const taskRoutes = require("./routes/taskRoutes");
 const authRoutes = require("./routes/authRoutes");
 
@@ -13,9 +12,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// API Routes
+// Routes
 app.use("/api/tasks", taskRoutes);
 app.use("/api/auth", authRoutes);
+
+// Default Route
+app.get("/", (req, res) => {
+  res.send("Task Manager Backend Running");
+});
 
 // MongoDB Connection
 mongoose
@@ -23,10 +27,13 @@ mongoose
   .then(() => {
     console.log("MongoDB Connected");
 
-    app.listen(5000, () => {
-      console.log("Server running on 5000");
+    // IMPORTANT FOR RENDER
+    const PORT = process.env.PORT || 5000;
+
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
     });
   })
   .catch((error) => {
-    console.log("MongoDB Error:", error);
+    console.log(error);
   });
